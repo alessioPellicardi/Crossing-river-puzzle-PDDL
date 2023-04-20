@@ -27,3 +27,8 @@ Si conta un punto per il codificatore se, finiti i tentativi del decifratore, la
 **Scopo**
 
 Lo scopo, da parte del codificatore, è di creare una combinazione di colori che non consenta al decifratore di risolverla prima di aver finito il proprio numero di tentativi. Di contro, lo scopo del decifratore è quello di indovinare la combinazione entro il numero di tentavi cha ha a disposizione.
+
+
+## Problemi noti:
+
+-é altamente improbabile vincere il gioco eseguendo solo una mossa, dobbiamo trovare il modo di inserire in pddl un feedback dei perni bianco e nero e delle mosse precedenti, di modo che il planner possa indovinare la mossa finale per la vincita
