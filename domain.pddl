@@ -12,6 +12,11 @@
 ;(:constants )
 
 (:predicates ;todo: define predicates here
+(sponda-sx ?x)
+(sponda-dx ?x ?y ?z )
+(a-bordo ?x)
+(barca-vuota)
+(barca-pos ?x)
 )
 
 
@@ -19,5 +24,10 @@
 )
 
 ;define actions here
+(:action move_goat_sd
+    :parameters (?x ?y ?z)
+    :precondition (and (sponda-sx pecora)(not(sponda-dx  ?x lupo cavolo))(barca-pos s)(barca-vuota))
+    :effect (and (sponda-dx pecora ?x ?y)(not(sponda-sx pecora))(not(barca-pos s))(barca-pos d))
+)
 
 )
