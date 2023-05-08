@@ -1,4 +1,3 @@
-;Header and description
 
 (define (domain lpc_domain)
 
@@ -8,10 +7,7 @@
 (:types ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
 )
 
-; un-comment following line if constants are needed
-;(:constants )
-
-(:predicates ;todo: define predicates here
+(:predicates 
 (sponda-sx ?x)
 (sponda-dx ?x ?y ?z )
 (a-bordo ?x)
@@ -20,10 +16,13 @@
 )
 
 
-(:functions ;todo: define numeric functions here
+;azione muovi pecora da destra a sinistra
+(:action move_goat_ds
+    :parameters (?x ?y ?z)
+    :precondition (and (sponda-dx pecora)(not(sponda-sx  ?x lupo cavolo))(barca-pos d)(barca-vuota))
+    :effect (and (sponda-sx pecora ?x ?y)(not(sponda-dx pecora))(not(barca-pos d))(barca-pos s))
 )
-
-;define actions here
+;azione muovi pecora da sinistra a destra
 (:action move_goat_sd
     :parameters (?x ?y ?z)
     :precondition (and (sponda-sx pecora)(not(sponda-dx  ?x lupo cavolo))(barca-pos s)(barca-vuota))
