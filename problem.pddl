@@ -1,15 +1,16 @@
-(define (problem problem_name) (:domain domain_name)
+(define (problem problem_name) (:domain lpc_domain)
 (:objects 
 )
 
 (:init
     ;todo: put the initial state's facts and numeric values here
+    (sponda-sx lupo pecora cavolo)
+    (barca-pos s)
+    (barca-vuota)
 )
 
 (:goal (and
-    ;todo: put the goal condition here
+    (sponda-dx pecora )
+    (sponda-sx lupo)
+    )
 ))
-
-;un-comment the following line if metric is needed
-;(:metric minimize (???))
-)

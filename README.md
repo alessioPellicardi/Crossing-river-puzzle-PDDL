@@ -10,7 +10,7 @@ In che modo il pastore può far passare la pecora, il lupo e il cavolo dall’al
 http://utenti.quipo.it/base5/logica/lupcacav.htm 
 
 # Idee di predicati
-(sponda-dx ?x ?y ?z)
-(sponda-sx ?x ?y ?z)
+(sponda-dx ? ?y ?z ?p)
+(sponda-sx ?x ?y ?z ?p)
 (a-bordo ?x)
-(barca-vuota)
+(pos-barca ?x)
