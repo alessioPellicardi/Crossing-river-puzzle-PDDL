@@ -2,7 +2,7 @@
 (define (domain lpc_domain)
 
 ;remove requirements that are not needed
-(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality :disjunctive-preconditions)
+(:requirements  :disjunctive-preconditions :negative-preconditions)
 
 
 (:predicates 
@@ -28,26 +28,27 @@
 ;azione muovi lupo da sinistra a destra
 (:action move-lupo-sx-dx
     :parameters (?c ?p)
-    :precondition (or (sponda-sx lupo vuoto cavolo barca)(sponda-sx lupo vuoto vuoto barca))
-    :effect (and (sponda-dx lupo ?c  ?p barca) (not (sponda-sx lupo ?c ?p barca)))
+    :precondition (or (sponda-sx ?c ?p lupo barca)(not(sponda-sx cavolo pecora lupo barca)))
+    :effect (and (sponda-dx ?c  ?p lupo  barca) (not (sponda-sx ?c ?p lupo barca)))
 )
 ;azione muovi lupo da destra a sinistra
 (:action move-lupo-dx-sx
     :parameters (?c ?p)
-    :precondition (or (sponda-dx lupo vuoto cavolo barca)(sponda-dx lupo vuoto vuoto barca))
-    :effect (and (sponda-sx lupo ?c  ?p barca) (not (sponda-dx lupo ?c ?p barca)))
+    :precondition (and (sponda-dx ?c ?p lupo barca))
+    :effect (and (sponda-sx ?c ?p lupo barca) (not (sponda-dx ?c ?p lupo barca)))
 )
 ;azione muovi cavolo da sinistra a destra
 (:action move-cavolo-sx-dx
-    :parameters (?c ?p)
-    :precondition (or (sponda-sx cavolo vuoto lupo barca)(sponda-sx cavolo vuoto vuoto barca))
-    :effect (and (sponda-dx cavolo ?c  ?p barca) (not (sponda-sx cavolo ?c ?p barca)))
+    :parameters ( ?p ?l)
+    :precondition (or (sponda-sx cavolo ?p ?l barca)(not(sponda-sx cavolo pecora lupo barca)))
+    :effect (and (sponda-dx cavolo ?p ?l barca) (not (sponda-sx cavolo ?p ?l barca)))
 )
+
 ;azione muovi cavolo da destra a sinistra
 (:action move-cavolo-dx-sx
-    :parameters (?c ?p)
-    :precondition (or (sponda-dx cavolo vuoto lupo barca)(sponda-dx cavolo vuoto vuoto barca))
-    :effect (and (sponda-sx cavolo ?c  ?p barca) (not (sponda-dx cavolo ?c ?p barca)))
+    :parameters (?p ?l)
+    :precondition (and (sponda-dx cavolo ?p ?l barca))
+    :effect (and (sponda-sx cavolo ?p  ?l barca) (not (sponda-dx cavolo ?p ?l barca)))
 )
 
 
