@@ -1,6 +1,6 @@
 ;Header and description
 
-(define (domain new_domain_lpc)
+(define (domain newDomainLPC)
 
 ;remove requirements that are not needed
 
