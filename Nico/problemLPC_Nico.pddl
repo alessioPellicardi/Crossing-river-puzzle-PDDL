@@ -1,4 +1,4 @@
-(define (problem problemLPC) (:domain new_domain_lpc)
+(define (problem problemLPC) (:domain newDomainLPC)
 (:objects 
     lupo pecora cavolo - daTrasportare
     barca - trasportatore
