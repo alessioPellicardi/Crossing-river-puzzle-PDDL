@@ -33,20 +33,20 @@
 )
 
 
-;Per muovere una coppia mi devo trovare nella situazione in cui sia su una sponda che sull'altra ci siano
-;coppie già formate, perchè se no mi trovo in una situazione che non è corretta
+;To move a couple I have to find myself in a situation where there are both on one bank and on the other
+;couples already formed, because otherwise I find myself in a situation that is not correct
 (:action move-couple-to-dx
     :parameters (?h - husband ?w - wife)
     :precondition (and
-                    ;marito,moglie e barca sulla stessa sponda
+                    ;husband,wife and boat on the same bank
                     (on-sx-h ?h)
                     (on-sx-w ?w)
                     (on-sx-boat)
 
-                    ;istanzio relazione tra marito e moglie
+                    ;specify relation between wife and husband
                     (couple ?h ?w)
 
-                    ;condizione che il numero di mariti e mogli sulle sponde siano uguali
+                    ;condition that says that the number of husbands and wives on the banks are equal
                     (=(husbands-on-dx)(wives-on-dx))
                     (=(husbands-on-sx)(wives-on-sx))
                 )
@@ -70,15 +70,15 @@
 (:action move-couple-to-sx
     :parameters (?h - husband ?w - wife)
     :precondition (and
-                    ;marito,moglie e barca sulla stessa sponda
+                    ;husband,wife and boat on the same bank
                     (on-dx-h ?h)
                     (on-dx-w ?w)
                     (on-dx-boat )
 
-                    ;istanzio relazione tra marito e moglie
+                    ;specify relation between wife and husband
                     (couple ?h ?w)
 
-                    ;condizione che il numero di mariti e mogli sulle sponde siano uguali
+                    ;condition that says that the number of husbands and wives on the banks are equal
                     (=(husbands-on-dx)(wives-on-dx))
                     (=(husbands-on-sx)(wives-on-sx))
                 )
@@ -105,9 +105,9 @@
 (:action move-husbands-to-dx
     :parameters (?h1 ?h2 -husband ?w1 ?w2 -wife)
     :precondition (or
-                    ;situazione in cui si separano dalle loro mogli
+                    ;situation where the husbands separate from their wives
                     (and
-                        ;i mariti e le loro mogli devono essere sulla stessa sponda, insiema alla barca
+                        ;husbands and wifes must be on the same bank, together with the boat
                         (on-sx-h ?h1)
                         (on-sx-h ?h2)
                         (on-sx-w ?w1)
@@ -115,19 +115,20 @@
 
                         (on-sx-boat)
 
-                        ;istanzio relazione tra mariti e mogli
+                        ;specify relation between wife and husband
                         (couple ?h1 ?w1)
                         (couple ?h2 ?w2)
 
-                        ;quando ci sono solamente quelle coppie lì sulla riva allora possono andarsene i mariti
+                        
+                        ;when there are only those couples on the bank then the husbands can leave
                         (=(husbands-on-sx) 2)
                         (=(wives-on-sx) 2)
 
                     )
 
-                    ;situazione in cui tornano dalle mogli
+                    ;situation when the husbands come back to their wives
                     (and
-                        ;i mariti con almeno una delle mogli sull'altra sponda
+                        ;hubsands with at least one wife on the other bank
                         (on-sx-h ?h1)
                         (on-sx-h ?h2)
                         (or
@@ -150,11 +151,11 @@
                         
                         (on-sx-boat)
 
-                        ;istanzio relazione tra mariti e mogli
+                        ;specify relation between wife and husband
                         (couple ?h1 ?w1)
                         (couple ?h2 ?w2)
 
-                        ;sull'altra sponda ci sono solo le mogli dei mariti o anche solo una delle due, senza altri mariti
+                        ;on the other bank there are only the wives of the husbands or even just one of the two, without other husbands
                         (<=(wives-on-dx) 2)
                         (=(husbands-on-dx) 0)
 
@@ -180,9 +181,10 @@
 (:action move-husbands-to-sx
     :parameters (?h1 ?h2 -husband ?w1 ?w2 -wife)
     :precondition (or
-                    ;situazione in cui si separano dalle loro mogli
+                    ;situation when the husbands separate from their wives
                     (and
-                        ;i mariti e le loro mogli devono essere sulla stessa sponda, insiema alla barca
+                        
+                        ;husbands and wifes must be on the same bank, together with the boat
                         (on-dx-h ?h1)
                         (on-dx-h ?h2)
                         (on-dx-w ?w1)
@@ -190,20 +192,20 @@
 
                         (on-dx-boat)
 
-                        ;istanzio relazione tra mariti e mogli
+                        ;specify relation between wife and husband
                         (couple ?h1 ?w1)
                         (couple ?h2 ?w2)
 
-                        ;quando ci sono solamente quelle coppie lì sulla riva
+                        ;only when there are those couples on the bank
                         (=(husbands-on-dx) 2)
                         (=(wives-on-dx) 2)
-                        (not(= ?h1 ?h2)) ;controllo di non spostare lo stesso marito per errore
+                        (not(= ?h1 ?h2)) ;verify to not move the same husband twice
 
                     )
 
-                    ;situazione in cui tornano dalle mogli
+                    ;situation when they come back to their wives
                     (and
-                        ;i mariti con almeno una delle mogli sull'altra sponda
+                        ;husbands with at least one wife on the other bank
                         (on-dx-h ?h1)
                         (on-dx-h ?h2)
                         (or
@@ -226,14 +228,15 @@
 
                         (on-dx-boat)
 
-                        ;istanzio relazione tra mariti e mogli
+                        ;specify relation between wife and husband
                         (couple ?h1 ?w1)
                         (couple ?h2 ?w2)
 
-                        ;sull'altra sponda ci sono solo le mogli dei mariti, senza altri mariti
+                        
+                        ;on the other bank there are only the wives of the husbands, without other husbands
                         (<=(wives-on-sx) 2)
                         (=(husbands-on-sx) 0)
-                        (not(= ?h1 ?h2)) ;controllo di non spostare lo stesso marito per errore
+                        (not(= ?h1 ?h2)) ;verify to not move the same husband twice
                         
 
                     )
@@ -260,32 +263,32 @@
 (:action move-wives-to-dx
     :parameters (?w1 ?w2 -wife)
     :precondition (or
-                    ;caso in cui lasciano i loro mariti
+                    ;situation when the wifes separate from their husbands
                     (and
-                        ;le mogli devono essere sulla stessa sponda con la barca  
+                        ;wifes has to be on the same bank, together with the boat 
                         (on-sx-w ?w1)
                         (on-sx-w ?w2)
 
                         (on-sx-boat)
 
-                        ;possono andarsene se non ci sono mariti sull'altra sponda
+                        ;wifes can leave only if there are no husbands on the other bank
                         (= (husbands-on-dx) 0)
-                        (not (= ?w1 ?w2)) ;controllo di non prendere due mogli uguali
+                        (not (= ?w1 ?w2)) ;verify to not move the same wife twice
                         
                     )
 
-                    ;caso in cui vanno dai mariti
+                    ;situation when the wifes come back to their husbands
                     (and
 
-                        ;le mogli devono essere sulla stessa sponda con la barca   
+                        ;wifes has to be on the same bank, together with the boat   
                         (on-sx-w ?w1)
                         (on-sx-w ?w2)
 
                         (on-sx-boat )
 
-                        ;possono andarsene se non ci sono mariti sulla sponda in cui sono
+                        ;they can leave only if there are no husbands on the same bank
                         (= (husbands-on-sx) 0)
-                        (not (= ?w1 ?w2)) ;controllo di non prendere due mogli uguali
+                        (not (= ?w1 ?w2)) ;verify to not move the same wife twice
                     )
 
                 )
@@ -307,29 +310,29 @@
 (:action move-wives-to-sx
     :parameters (?w1 ?w2 -wife)
     :precondition (or
-                    ;caso in cui lasciano i loro mariti
+                    ;situaton when the wifes separate from their husbands
                     (and
-                        ;le mogli devono essere sulla stessa sponda con la barca   
+                        ;wifes has to be on the same bank, together with the boat   
                         (on-dx-w ?w1)
                         (on-dx-w ?w2)
 
                         (on-dx-boat )
 
-                        ;possono andarsene se non ci sono mariti sull'altra sponda
+                        ;they can leave only if there are no husbands on the other bank
                         (= (husbands-on-sx) 0)
-                        (not (= ?w1 ?w2)) ;controllo di non prendere due mogli uguali
+                        (not (= ?w1 ?w2)) ;verify to not move the same wife twice
                         
                     )
 
-                    ;caso in cui vanno dai mariti
+                    ;situation when they go back to their husbands
                     (and
-                        ;le mogli devono essere sulla stessa sponda con la barca   
+                        ;wifes has to be on the same bank, together with the boat   
                         (on-dx-w ?w1)
                         (on-dx-w ?w2)
 
                         (on-dx-boat )
 
-                        ;possono andarsene se non ci sono mariti sulla sponda in cui sono
+                        ;they can leave only if there are no husbands on the same bank
                         (= (husbands-on-dx) 0)
                         (not (= ?w1 ?w2))
 
@@ -355,28 +358,30 @@
     :parameters (?h1 -husband ?w1 -wife)
     :precondition (or
                     (and
-                        ;il marito e la moglie sono sulla stessa sponda insieme alla barca   
+                        ;husband and wife are on the same bank, together with the boat
                         (on-sx-h ?h1)
                         (on-sx-w ?w1)
                         (on-sx-boat)
 
                         (couple ?h1 ?w1)
 
-                        ;nel momento che è l'unica coppia sulla sponda posso lasciare la moglie da sola
+                       
+                        ;since is the only couple on the bank, the husband can leave the wife alone
                         (=(husbands-on-sx) 1)
                         (=(wives-on-sx) 1)
                     )
 
 
                     (and
-                        ;il marito e la barca sono sulla sponda opposta rispetto alla moglie  
+                        ;husband and boat are on the opposite bank of the wife 
                         (on-sx-h ?h1)
                         (on-dx-w ?w1)
                         (on-sx-boat)
 
                         (couple ?h1 ?w1)
 
-                        ;se la moglie è dall'altra parte senza nessun altro marito allora è situazione valida
+                        
+                        ;if the wife is on the other bank without any other husband, then the situation is valid
                         (=(husbands-on-dx) 0)
                     )
 
@@ -397,28 +402,29 @@
     :parameters (?h1 -husband ?w1 -wife)
     :precondition (or
                     (and
-                        ;il marito e la moglie sono sulla stessa sponda insieme alla barca 
+                        ;husband and wife are on the same bank, together with the boat 
                         (on-dx-h ?h1)
                         (on-dx-w ?w1)
                         (on-dx-boat)
 
                         (couple ?h1 ?w1)
 
-                        ;nel momento che è l'unica coppia sulla sponda posso lasciare la moglie da sola
+                        ;since is the only couple on the bank, the husband can leave the wife alone
                         (=(husbands-on-dx) 1)
                         (=(wives-on-dx) 1)
                     )
 
 
                     (and
-                        ;il marito e la barca sono sulla sponda opposta rispetto alla moglie  
+                        ;husband and boat are on the opposite bank of the wife
                         (on-dx-h ?h1)
                         (on-sx-w ?w1)
                         (on-dx-boat)
 
                         (couple ?h1 ?w1)
 
-                        ;se la moglie è dall'altra parte senza nessun altro marito allora è situazione valida
+                       
+                        ;if the wife is on the other bank without any other husband, then the situation is valid
                         (=(husbands-on-sx) 0)
                     )
 
@@ -445,7 +451,8 @@
                         (on-sx-w ?w1)
                         (on-sx-boat )
 
-                        ;se non c'è nessun marito sulla sua spiaggia può tornare dal suo sull'altra sponda
+                        
+                        ;if there are no husbands on her bank she can go back to her husband on the other bank
                         (=(husbands-on-sx) 0)
                         
                     )
@@ -454,7 +461,8 @@
                         (on-sx-w ?w1)
                         (on-sx-boat )
 
-                        ;se non c'è nessun marito sulla spiaggia opposta può andare tranquillamente
+                        
+                        ;if there is no husband on the opposite bank she can easily go
                         (=(husbands-on-dx) 0)
                     )
 
@@ -480,7 +488,8 @@
                         (on-dx-w ?w1)
                         (on-dx-boat)
 
-                        ;se non c'è nessun marito sulla sua spiaggia può tornare dal suo sull'altra sponda
+                        
+                        ;if there are no husbands on her bank she can go back to her husband on the other bank
                         (=(husbands-on-dx) 0)
                         
                     )
@@ -489,7 +498,8 @@
                         (on-dx-w ?w1)
                         (on-dx-boat )
 
-                        ;se non c'è nessun marito sulla spiaggia opposta può andare tranquillamente
+                        
+                        ;if there is no husband on the opposite bank she can easily go
                         (=(husbands-on-sx) 0)
                     )
 
