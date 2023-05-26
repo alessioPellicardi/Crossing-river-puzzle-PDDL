@@ -5,7 +5,7 @@ import cv2
 from PIL import Image, ImageTk
 import tkinter as tk
 
-subprocess.call([r"C:/Users/alela/Desktop/UNIVERSITA/AI/LPC_PDDL/LPC_PDDL_GRAFICA/esecutore2Couples.bat"])
+subprocess.call([r"C:/Users/alela/Desktop/UNIVERSITA/AI/LPC_PDDL/LPC_PDDL_GRAFICA/2Couples/esecutore2Couples.bat"])
 
 # wait = input("Premi un tasto per continuare...")
 var_lettura = open("piano2coppie.txt", "r").readlines()
