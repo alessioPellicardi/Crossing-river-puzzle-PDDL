@@ -1,0 +1,7 @@
+(trasporta-pecora-destra barca)
+(empty-going-left barca)
+(trasporta-lupo-destra barca)
+(trasporta-pecora-sinistra barca)
+(trasporta-cavolo-destra barca)
+(empty-going-left barca)
+(trasporta-pecora-destra barca)
