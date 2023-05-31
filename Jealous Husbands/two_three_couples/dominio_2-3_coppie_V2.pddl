@@ -107,7 +107,7 @@
     :precondition (or
                     ;situation where the husbands separate from their wives
                     (and
-                        ;husbands and wifes must be on the same bank, together with the boat
+                        ;husbands and wives must be on the same bank, together with the boat
                         (on-sx-h ?h1)
                         (on-sx-h ?h2)
                         (on-sx-w ?w1)
@@ -184,7 +184,7 @@
                     ;situation when the husbands separate from their wives
                     (and
                         
-                        ;husbands and wifes must be on the same bank, together with the boat
+                        ;husbands and wives must be on the same bank, together with the boat
                         (on-dx-h ?h1)
                         (on-dx-h ?h2)
                         (on-dx-w ?w1)
@@ -263,24 +263,24 @@
 (:action move-wives-to-dx
     :parameters (?w1 ?w2 -wife)
     :precondition (or
-                    ;situation when the wifes separate from their husbands
+                    ;situation when the wives separate from their husbands
                     (and
-                        ;wifes has to be on the same bank, together with the boat 
+                        ;wives have to be on the same bank, together with the boat 
                         (on-sx-w ?w1)
                         (on-sx-w ?w2)
 
                         (on-sx-boat)
 
-                        ;wifes can leave only if there are no husbands on the other bank
+                        ;wives can leave only if there are no husbands on the other bank
                         (= (husbands-on-dx) 0)
                         (not (= ?w1 ?w2)) ;verify to not move the same wife twice
                         
                     )
 
-                    ;situation when the wifes come back to their husbands
+                    ;situation when the wives come back to their husbands
                     (and
 
-                        ;wifes has to be on the same bank, together with the boat   
+                        ;wives have to be on the same bank, together with the boat   
                         (on-sx-w ?w1)
                         (on-sx-w ?w2)
 
@@ -310,9 +310,9 @@
 (:action move-wives-to-sx
     :parameters (?w1 ?w2 -wife)
     :precondition (or
-                    ;situaton when the wifes separate from their husbands
+                    ;situaton when the wives separate from their husbands
                     (and
-                        ;wifes has to be on the same bank, together with the boat   
+                        ;wives have to be on the same bank, together with the boat   
                         (on-dx-w ?w1)
                         (on-dx-w ?w2)
 
@@ -326,7 +326,7 @@
 
                     ;situation when they go back to their husbands
                     (and
-                        ;wifes has to be on the same bank, together with the boat   
+                        ;wives have to be on the same bank, together with the boat   
                         (on-dx-w ?w1)
                         (on-dx-w ?w2)
 
