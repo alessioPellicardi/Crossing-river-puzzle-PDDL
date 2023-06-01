@@ -2,7 +2,7 @@
 
 (:requirements :fluents)
 (:objects 
-    h1 h2 h3 h4 h5- husband
+    h1 h2 h3 h4 h5 - husband
     w1 w2 w3 w4 w5 - wife
 ) 
 
