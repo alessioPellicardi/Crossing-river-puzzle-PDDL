@@ -214,6 +214,11 @@
                         (on-dx-h ?h2)
                         (on-dx-h ?h3)
                         (on-dx-h ?h4)
+
+                        (on-sx-w ?w1)
+                        (on-sx-w ?w2)
+                        (on-sx-w ?w3)
+                        (on-sx-w ?w4)
                        
                         (on-dx-boat)
 
@@ -237,14 +242,14 @@
                 (on-sx-h ?h3)
                 (on-sx-h ?h4)
                 (on-sx-boat)
-                (increase (husbands-sn-dx) 4)
+                (increase (husbands-on-dx) 4)
 
                 (not (on-dx-h ?h1))
                 (not (on-dx-h ?h2))
                 (not (on-dx-h ?h3))
                 (not (on-dx-h ?h4))
                 (not(on-dx-boat ))
-                (decrease (husbands-dn-sx) 4)
+                (decrease (husbands-on-sx) 4)
             )
 )
 
@@ -377,7 +382,7 @@
                     (on-sx-h ?h1)
                     (on-sx-h ?h2)
                     (on-sx-w ?w1)
-                    (on-sx-h ?h2)
+                    (on-sx-w ?w2)
                     (on-sx-boat)
 
                     ;specify relation between wife and husband
@@ -416,7 +421,7 @@
                     (on-dx-h ?h1)
                     (on-dx-h ?h2)
                     (on-dx-w ?w1)
-                    (on-dx-h ?h2)
+                    (on-dx-w ?w2)
                     (on-dx-boat)
 
                     ;specify relation between wife and husband
@@ -434,7 +439,7 @@
                 (on-sx-w ?w1)
                 (on-sx-w ?w2)
                 (on-sx-boat )               
-                (increase (husbands-sn-dx) 2)
+                (increase (husbands-on-dx) 2)
                 (increase (wives-on-sx) 2)
                 
                 (not (on-dx-h ?h1))
