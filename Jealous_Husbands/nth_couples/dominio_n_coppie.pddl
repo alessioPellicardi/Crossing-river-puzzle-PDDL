@@ -127,6 +127,9 @@
                         (couple ?h3 ?w3)
                         (couple ?h4 ?w4)
 
+                        ;the husbands must not be the same
+                        (not())
+
                         
                         ;when there are only those couples on the bank then the husbands can leave
                         (=(husbands-on-sx) 4)
