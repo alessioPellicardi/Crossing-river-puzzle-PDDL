@@ -450,4 +450,79 @@
 
 )
 
+
+;-------------------------------------------------------------------------------------
+(:action move-wife-to-dx
+    :parameters (?w1 -wife)
+    :precondition (or
+                    (and
+                        
+                        (on-sx-w ?w1)
+                        (on-sx-boat )
+
+                        
+                        ;if there are no husbands on her bank she can go back to her husband on the other bank
+                        (=(husbands-on-sx) 0)
+                        
+                    )
+
+                    (and
+                        (on-sx-w ?w1)
+                        (on-sx-boat )
+
+                        
+                        ;if there is no husband on the opposite bank she can easily go
+                        (=(husbands-on-dx) 0)
+                    )
+
+                )
+
+    :effect (and 
+                (on-dx-w ?w1)
+                (on-dx-boat)
+                (increase (wives-on-dx) 1)
+
+                (not (on-sx-w ?w1))
+                (not(on-sx-boat))
+                (decrease (wives-on-sx) 1)
+            )
+)
+
+
+(:action move-wife-to-sx
+    :parameters (?w1 -wife)
+    :precondition (or
+                    (and
+                        
+                        (on-dx-w ?w1)
+                        (on-dx-boat)
+
+                        
+                        ;if there are no husbands on her bank she can go back to her husband on the other bank
+                        (=(husbands-on-dx) 0)
+                        
+                    )
+
+                    (and
+                        (on-dx-w ?w1)
+                        (on-dx-boat )
+
+                        
+                        ;if there is no husband on the opposite bank she can easily go
+                        (=(husbands-on-sx) 0)
+                    )
+
+                )
+
+    :effect (and 
+                (on-sx-w ?w1)
+                (on-sx-boat)
+                (increase (wives-on-sx) 1)
+
+                (not (on-dx-w ?w1))
+                (not(on-dx-boat))
+                (decrease (wives-on-dx) 1)
+            )
+)
+
 )
