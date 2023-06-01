@@ -128,7 +128,14 @@
                         (couple ?h4 ?w4)
 
                         ;the husbands must not be the same
-                        (not())
+                        (not(= ?h1 ?h2))
+                        (not(= ?h1 ?h3))
+                        (not(= ?h1 ?h4))
+
+                        (not(= ?h2 ?h3))
+                        (not(= ?h2 ?h4))
+
+                        (not(= ?h3 ?h4))
 
                         
                         ;when there are only those couples on the bank then the husbands can leave
@@ -152,6 +159,16 @@
                         (couple ?h2 ?w2)
                         (couple ?h3 ?w3)
                         (couple ?h4 ?w4)
+
+                        ;the husbands must not be the same
+                        (not(= ?h1 ?h2))
+                        (not(= ?h1 ?h3))
+                        (not(= ?h1 ?h4))
+
+                        (not(= ?h2 ?h3))
+                        (not(= ?h2 ?h4))
+
+                        (not(= ?h3 ?h4))
 
                         (=(wives-on-dx) 4)
                         (=(husbands-on-dx) 0)
@@ -203,6 +220,16 @@
                         (couple ?h3 ?w3)
                         (couple ?h4 ?w4)
 
+                        ;the husbands must not be the same
+                        (not(= ?h1 ?h2))
+                        (not(= ?h1 ?h3))
+                        (not(= ?h1 ?h4))
+
+                        (not(= ?h2 ?h3))
+                        (not(= ?h2 ?h4))
+
+                        (not(= ?h3 ?h4))
+
                         
                         ;when there are only those couples on the bank then the husbands can leave
                         (=(husbands-on-dx) 4)
@@ -230,6 +257,16 @@
                         (couple ?h2 ?w2)
                         (couple ?h3 ?w3)
                         (couple ?h4 ?w4)
+
+                        ;the husbands must not be the same
+                        (not(= ?h1 ?h2))
+                        (not(= ?h1 ?h3))
+                        (not(= ?h1 ?h4))
+
+                        (not(= ?h2 ?h3))
+                        (not(= ?h2 ?h4))
+
+                        (not(= ?h3 ?h4))
 
                         (=(wives-on-sx) 4)
                         (=(husbands-on-sx) 0)
