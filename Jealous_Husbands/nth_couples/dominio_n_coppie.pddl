@@ -30,8 +30,6 @@
     (husbands-on-sx)
     (wives-on-dx)
     (wives-on-sx)
-    (husbands-sn-dx)
-    (husbands-dn-sx)
 )
 
 
@@ -274,8 +272,21 @@
 
                         ;wives can leave only if there are no husbands on the other bank
                         (= (husbands-on-dx) 0)
-                        ;(not (= ?w1 ?w2 ?w3 ?w4 ?w5)) ;verify to not move the same wife twice
+
+                        ;verify to not move the same wife twice
+                        (not (= ?w1 ?w2)) 
+                        (not (= ?w1 ?w3))
+                        (not (= ?w1 ?w4))
+                        (not (= ?w1 ?w5))
+
+                        (not (= ?w2 ?w3))
+                        (not (= ?w2 ?w4))
+                        (not (= ?w2 ?w5))
                         
+                        (not (= ?w3 ?w4))
+                        (not (= ?w3 ?w5))
+                        
+                        (not (= ?w4 ?w5))
                     )
 
                     ;situation when the wifes come back to their husbands
@@ -292,7 +303,18 @@
 
                         ;they can leave only if there are no husbands on the same bank
                         (= (husbands-on-sx) 0)
-                        ;(not (= ?w1 ?w2 ?w3 ?w4 ?w5)) ;verify to not move the same wife twice
+                        ;verify to not move the same wife twice
+                        (not (= ?w1 ?w2)) 
+                        (not (= ?w1 ?w3))
+                        (not (= ?w1 ?w4))
+                        (not (= ?w1 ?w5))
+
+                        (not (= ?w2 ?w3))
+                        (not (= ?w2 ?w4))
+                        (not (= ?w2 ?w5))
+                        
+                        (not (= ?w3 ?w4))
+                        (not (= ?w3 ?w5))
                     )
 
                 )
@@ -333,7 +355,18 @@
 
                         ;wives can leave only if there are no husbands on the other bank
                         (= (husbands-on-sx) 0)
-                        ;(not (= ?w1 ?w2 ?w3 ?w4 ?w5)) ;verify to not move the same wife twice
+                        ;verify to not move the same wife twice
+                        (not (= ?w1 ?w2)) 
+                        (not (= ?w1 ?w3))
+                        (not (= ?w1 ?w4))
+                        (not (= ?w1 ?w5))
+
+                        (not (= ?w2 ?w3))
+                        (not (= ?w2 ?w4))
+                        (not (= ?w2 ?w5))
+                        
+                        (not (= ?w3 ?w4))
+                        (not (= ?w3 ?w5))
                         
                     )
 
@@ -351,7 +384,18 @@
 
                         ;they can leave only if there are no husbands on the same bank
                         (= (husbands-on-dx) 0)
-                        ;(not (= ?w1 ?w2 ?w3 ?w4 ?w5)) ;verify to not move the same wife twice
+                        ;verify to not move the same wife twice
+                        (not (= ?w1 ?w2)) 
+                        (not (= ?w1 ?w3))
+                        (not (= ?w1 ?w4))
+                        (not (= ?w1 ?w5))
+
+                        (not (= ?w2 ?w3))
+                        (not (= ?w2 ?w4))
+                        (not (= ?w2 ?w5))
+                        
+                        (not (= ?w3 ?w4))
+                        (not (= ?w3 ?w5))
                     )
 
                 )
@@ -390,6 +434,10 @@
                     ;specify relation between wife and husband
                     (couple ?h1 ?w1)
                     (couple ?h2 ?w2)
+
+                    ;wives and husbands must not be the same
+                    (not(= ?h1 ?h2))
+                    (not(= ?w1 ?w2))
 
                     ;condition that says that the number of husbands and wives on the banks are equal
                     (=(husbands-on-dx)(wives-on-dx))
@@ -430,6 +478,10 @@
                     (couple ?h1 ?w1)
                     (couple ?h2 ?w2)
 
+                    ;wives and husbands must not be the same
+                    (not(= ?h1 ?h2))
+                    (not(= ?w1 ?w2))
+
                     ;condition that says that the number of husbands and wives on the banks are equal
                     (=(husbands-on-dx)(wives-on-dx))
                     (=(husbands-on-sx)(wives-on-sx))
@@ -464,8 +516,7 @@
                         
                         (on-sx-w ?w1)
                         (on-sx-boat )
-
-                        
+                       
                         ;if there are no husbands on her bank she can go back to her husband on the other bank
                         (=(husbands-on-sx) 0)
                         
