@@ -151,6 +151,11 @@
                         (on-sx-h ?h2)
                         (on-sx-h ?h3)
                         (on-sx-h ?h4)
+
+                        (on-dx-w ?w1)
+                        (on-dx-w ?w2)
+                        (on-dx-w ?w3)
+                        (on-dx-w ?w4)
                        
                         (on-sx-boat)
 
