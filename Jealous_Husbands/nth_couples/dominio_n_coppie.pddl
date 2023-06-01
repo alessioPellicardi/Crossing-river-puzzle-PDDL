@@ -30,6 +30,8 @@
     (husbands-on-sx)
     (wives-on-dx)
     (wives-on-sx)
+    (husbands-sn-dx)
+    (husbands-dn-sx)
 )
 
 
