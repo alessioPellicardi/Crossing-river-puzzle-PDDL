@@ -1,0 +1,1 @@
+java  -jar enhsp-20.jar -o WSC_domain.pddl -f WSC_problem.pddl -sp plan.txt

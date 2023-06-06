@@ -1,1 +1,0 @@
-java  -jar enhsp-20.jar -o dominio_2-3_coppie_V2.pddl -f problema_3_coppie.pddl -sp piano3coppie.txt

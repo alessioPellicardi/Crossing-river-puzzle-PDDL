@@ -1,5 +1,0 @@
-(move-wives-to-dx w1 w2)
-(move-wife-to-sx w1)
-(move-husbands-to-dx h1 h2 w1 w2)
-(move-wife-to-sx w2)
-(move-wives-to-dx w1 w2)
