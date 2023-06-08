@@ -32,10 +32,10 @@ for string in var_lettura:
     # Aggiunta del 2 alla seconda versione delle mosse
     cont = cont + 1
     print(cont)
-    if (cont == 5):
+    if (cont == 6):
         image_name = command + "-2.png"
         image_array.append(image_name)
-    elif (cont == 6):
+    elif (cont == 7):
         image_name = command + "-2.png"
         image_array.append(image_name)
     else:
@@ -44,7 +44,7 @@ for string in var_lettura:
 
 print(numeric_array)
 # Inserisco manualmente immagine iniziale e finale
-image_array.insert(0, "startingPoint2Couples.png")
+image_array.insert(0, "starting-point.png")
 image_array.insert(len(image_array), "final-situation.png")
 moves_array_temp.insert(0, "starting point")
 moves_array_temp.insert(len(image_array), "finish")
@@ -58,7 +58,7 @@ root = tk.Tk()
 
 # Crea un Label per visualizzare le immagini
 image_label = tk.Label(root)
-image_label.pack()
+image_label.grid()
 
 # Crea una lista per mantenere i riferimenti alle istanze di PhotoImage
 photo_array = []
