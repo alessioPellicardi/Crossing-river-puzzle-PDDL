@@ -44,7 +44,7 @@ for string in var_lettura:
     elif (cont == 4):
         image_name = command + "-2.png"
         image_array.append(image_name)
-    elif (cont == 5):
+    elif (cont == 7):
         image_name = command + "-2.png"
         image_array.append(image_name)
     elif (cont == 8):
