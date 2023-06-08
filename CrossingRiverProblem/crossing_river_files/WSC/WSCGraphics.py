@@ -16,7 +16,7 @@ moves_array_temp = []
 moves_array = []
 cont = 0
 mapping = {
-    'move.sheep-right': 1,
+    'move-sheep-right': 1,
     'empty-going-left': 2,
     'move-wolf-right': 3,
     'move-sheep-left': 4,
