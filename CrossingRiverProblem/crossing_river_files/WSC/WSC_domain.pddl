@@ -1,193 +1,278 @@
 ;Header and description
 
-(define (domain newDomainLPC)
+(define (domain domainWSC)
 
-;remove requirements that are not needed
+(:requirements :typing :fluents :disjunctive-preconditions :equality)
 
-; un-comment following line if constants are needed
-;(:constants )
 
 (:types
-  daTrasportare
-  trasportatore
+    wolf
+    sheep
+    cabbage
 )
+
 
 (:predicates ;todo: define predicates here
-    (on-dx ?x - daTrasportare)
-    (on-sx ?x - daTrasportare)
+    (on-dx-w ?w - wolf)
+    (on-sx-w ?w - wolf)
+    
+    (on-dx-s ?s - sheep)
+    (on-sx-s ?s - sheep)
 
-    (on-dx-barca ?y - trasportatore)
-    (on-sx-barca ?y - trasportatore)
+    (on-dx-c ?c - cabbage)
+    (on-sx-c ?c - cabbage)
 
-)
-
-(:action move-cabbage-right
-  :parameters (?y - trasportatore)
-  :precondition (or 
-                    (and
-                        (on-sx cavolo)
-                        (on-sx-barca ?y) 
-                        (on-sx lupo) 
-                        (on-dx pecora)
-                    )
-
-                    (and
-                        (on-sx cavolo)
-                        (on-sx-barca ?y) 
-                        (on-dx lupo) 
-                        (on-sx pecora)
-                    )
-
-                )
-
-  :effect (and (on-dx cavolo)(not (on-sx cavolo)) (on-dx-barca ?y)(not (on-sx-barca ?y)))
-)
-
-(:action move-cabbage-left
-  :parameters (?y - trasportatore)
-  :precondition (or 
-                    (and
-                        (on-dx cavolo)
-                        (on-dx-barca ?y) 
-                        (on-sx lupo) 
-                        (on-dx pecora)
-                    )
-
-                    (and
-                        (on-dx cavolo)
-                        (on-dx-barca ?y) 
-                        (on-dx lupo) 
-                        (on-sx pecora)
-                    )
-
-                )
-  :effect (and (on-sx cavolo)(not (on-dx cavolo))(on-sx-barca ?y)(not (on-dx-barca ?y)))
+    (on-dx-boat)
+    (on-sx-boat)
 )
 
 
 (:action move-sheep-right
-  :parameters (?y - trasportatore)
-  :precondition (and (on-sx pecora) (on-sx-barca ?y))
-  :effect (and (on-dx pecora)(not (on-sx pecora))(on-dx-barca ?y)(not (on-sx-barca ?y)))
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition (and 
+
+                    ;the sheep on the sx bank with the boat
+                    (on-sx-s ?s)
+                    (on-sx-boat)
+
+                    ;it doesn't matter where the others are, I can carry the sheep
+
+                )
+
+    :effect (and 
+                (not(on-sx-s ?s))
+                (not(on-sx-boat))
+
+                (on-dx-s ?s)
+                (on-dx-boat)
+            )
 )
 
 (:action move-sheep-left
-  :parameters (?y - trasportatore)
-  :precondition (and (on-dx pecora) (on-dx-barca ?y))
-  :effect (and (on-sx pecora)(not (on-dx pecora))(on-sx-barca ?y)(not (on-dx-barca ?y)))
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition (and 
+
+                    ;the sheep on the sx bank with the boat
+                    (on-dx-s ?s)
+                    (on-dx-boat)
+
+                    ;it doesn't matter where the others are, I can carry the sheep
+
+                )
+
+    :effect (and 
+                (not(on-dx-s ?s))
+                (not(on-dx-boat))
+
+                (on-sx-s ?s)
+                (on-sx-boat)
+            )
 )
 
+;--------------------------------------------------------------------------------------
 
 (:action move-wolf-right
-  :parameters (?y - trasportatore)
-  :precondition  (or 
-                    (and
-                        (on-sx lupo)
-                        (on-sx-barca ?y) 
-                        (on-sx pecora) 
-                        (on-dx cavolo)
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;the wolf on the sx bank with the boat
+                    (on-sx-w ?w)
+                    (on-sx-boat)
+
+                    ;it can be moved if the sheep and cabbage are on opposite banks
+                    (or
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-c ?c)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-c ?c)
+                        )
                     )
 
-                    (and
-                        (on-sx lupo)
-                        (on-sx-barca ?y) 
-                        (on-dx pecora) 
-                        (on-sx cavolo)
-                    )
+                )  
 
-                )
-  :effect (and (on-dx lupo)(not (on-sx lupo))(on-dx-barca ?y)(not (on-sx-barca ?y)))
+
+    :effect (and 
+                (not(on-sx-w ?w))
+                (not(on-sx-boat))
+
+                (on-dx-w ?w)
+                (on-dx-boat)
+            )
 )
+
 
 (:action move-wolf-left
-  :parameters (?y - trasportatore)
-  :precondition (or 
-                    (and
-                        (on-dx lupo)
-                        (on-dx-barca ?y) 
-                        (on-dx pecora) 
-                        (on-sx cavolo)
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;the wolf on the dx bank with the boat
+                    (on-dx-w ?w)
+                    (on-dx-boat)
+
+                    ;it can be moved if the sheep and cabbage are on opposite banks
+                    (or
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-c ?c)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-c ?c)
+                        )
                     )
 
-                    (and
-                        (on-dx lupo)
-                        (on-dx-barca ?y) 
-                        (on-sx pecora) 
-                        (on-dx cavolo)
+                )  
+
+
+    :effect (and 
+                (not(on-dx-w ?w))
+                (not(on-dx-boat))
+
+                (on-sx-w ?w)
+                (on-sx-boat)
+            )
+)
+
+;--------------------------------------------------------------------------------------
+
+(:action move-cabbage-right
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;the cabbage on the sx bank with the boat
+                    (on-sx-c ?c)
+                    (on-sx-boat)
+
+                    ;it can be moved if the sheep and wolf are on opposite banks
+                    (or
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-w ?w)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-w ?w)
+                        )
                     )
 
-                )
-  :effect (and (on-sx lupo)(not (on-dx lupo))(on-sx-barca ?y)(not (on-dx-barca ?y)))
+                )  
+
+    :effect (and 
+                (not(on-sx-c ?c))
+                (not(on-sx-boat))
+
+                (on-dx-c ?c)
+                (on-dx-boat)
+            )
 )
 
 
-; mettere un or in precondition e fare le due situazioni in cui una si ha and tra barca lupo pecora e l'altra barca pecora cavolo
+(:action move-cabbage-left
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;the cabbage on the sx bank with the boat
+                    (on-dx-c ?c)
+                    (on-dx-boat)
 
+                    ;it can be moved if the sheep and wolf are on opposite banks
+                    (or
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-w ?w)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-w ?w)
+                        )
+                    )
+
+                )  
+
+    :effect (and 
+                (not(on-dx-c ?c))
+                (not(on-dx-boat))
+
+                (on-sx-c ?c)
+                (on-sx-boat)
+            )
+)
+
+;--------------------------------------------------------------------------------------
 (:action empty-going-right
-  :parameters (?y - trasportatore)
-  :precondition (or 
-                    (and
-                        (on-sx-barca ?y)
-                        (on-sx lupo)
-                        (on-dx pecora)
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;to move the boat on the right you need the boat on the left
+                    (on-sx-boat)
+
+                    ;it can be moved if the sheep-wolf and the sheep-cabbage combinations are on opposite banks
+                    (or 
+                        ;different banks for sheep and wolf
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-w ?w)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-w ?w)
+                        )
+                        
+                        ;different banks for sheep and cabbage
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-c ?c)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-c ?c)
+                        )
+
                     )
 
-                    (and
-                        (on-sx-barca ?y)
-                        (on-dx lupo)
-                        (on-sx pecora)
-                    )
+                )  
 
-                    (and
-                        (on-sx-barca ?y)
-                        (on-sx cavolo)
-                        (on-dx pecora)
-                    )
+    :effect (and 
+                (not(on-sx-boat))
 
-                    (and
-                        (on-sx-barca ?y)
-                        (on-dx cavolo)
-                        (on-sx pecora)
-                    )
-                    
-                )           
-  :effect (and (on-dx-barca ?y)(not (on-sx-barca ?y)))
+                (on-dx-boat)
+            )
 )
 
 (:action empty-going-left
-  :parameters (?y - trasportatore)
-  :precondition (or 
-                    (and
-                        (on-dx-barca ?y)
-                        (on-sx lupo)
-                        (on-dx pecora)
-                    )
+    :parameters (?w -wolf ?s -sheep ?c -cabbage)
+    :precondition(and 
+                    ;to move the boat on the right you need the boat on the left
+                    (on-dx-boat)
 
-                    (and
-                        (on-dx-barca ?y)
-                        (on-dx lupo)
-                        (on-sx pecora)
-                    )
-
-                    (and
-                        (on-dx-barca ?y)
-                        (on-sx cavolo)
-                        (on-dx pecora)
-                    )
-
-                    (and
-                        (on-dx-barca ?y)
-                        (on-dx cavolo)
-                        (on-sx pecora)
-                    )
-                    
-                )
+                    ;it can be moved if the sheep-wolf and the sheep-cabbage combinations are on opposite banks
+                    (or 
+                        ;different banks for sheep and wolf
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-w ?w)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-w ?w)
+                        )
                         
-  :effect (and (on-sx-barca ?y)(not (on-dx-barca ?y)))
+                        ;different banks for sheep and cabbage
+                        (and
+                            (on-sx-s ?s)
+                            (on-dx-c ?c)
+                        )
+                        (and
+                            (on-dx-s ?s)
+                            (on-sx-c ?c)
+                        )
+
+                    )
+
+                )  
+
+    :effect (and 
+                (not(on-dx-boat))
+
+                (on-sx-boat)
+            )
 )
-
-
-
-;define actions here
-
 )

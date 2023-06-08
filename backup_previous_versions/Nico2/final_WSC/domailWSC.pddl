@@ -27,7 +27,7 @@
 )
 
 
-(:action move-sheep-to-dx
+(:action move-sheep-right
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition (and 
 
@@ -48,7 +48,7 @@
             )
 )
 
-(:action move-sheep-to-sx
+(:action move-sheep-left
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition (and 
 
@@ -71,7 +71,7 @@
 
 ;--------------------------------------------------------------------------------------
 
-(:action move-wolf-to-dx
+(:action move-wolf-right
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;the wolf on the sx bank with the boat
@@ -103,7 +103,7 @@
 )
 
 
-(:action move-wolf-to-sx
+(:action move-wolf-left
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;the wolf on the dx bank with the boat
@@ -136,7 +136,7 @@
 
 ;--------------------------------------------------------------------------------------
 
-(:action move-cabbage-to-dx
+(:action move-cabbage-right
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;the cabbage on the sx bank with the boat
@@ -167,7 +167,7 @@
 )
 
 
-(:action move-cabbage-to-sx
+(:action move-cabbage-left
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;the cabbage on the sx bank with the boat
@@ -198,7 +198,7 @@
 )
 
 ;--------------------------------------------------------------------------------------
-(:action move-empty-boat-to-dx
+(:action empty-going-right
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;to move the boat on the right you need the boat on the left
@@ -237,7 +237,7 @@
             )
 )
 
-(:action move-empty-boat-to-sx
+(:action empty-going-left
     :parameters (?w -wolf ?s -sheep ?c -cabbage)
     :precondition(and 
                     ;to move the boat on the right you need the boat on the left

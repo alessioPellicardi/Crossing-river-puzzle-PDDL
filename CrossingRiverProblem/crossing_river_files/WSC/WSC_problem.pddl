@@ -1,21 +1,22 @@
-(define (problem problemLPC) (:domain newDomainLPC)
+(define (problem problemWSC) (:domain domainWSC)
 (:objects 
-    lupo pecora cavolo - daTrasportare
-    barca - trasportatore
+    wolf - wolf
+    sheep - sheep
+    cabbage - cabbage
 )
 
 (:init
-   (on-sx lupo)
-   (on-sx pecora)
-   (on-sx cavolo)
-   (on-sx-barca barca)
+   (on-sx-w wolf)
+   (on-sx-s sheep)
+   (on-sx-c cabbage)
+   (on-sx-boat)
 )
 
 (:goal (and
-    (on-dx lupo)
-    (on-dx pecora)
-    (on-dx cavolo)
-    (on-dx-barca barca)
+    (on-dx-w wolf)
+    (on-dx-s sheep)
+    (on-dx-c cabbage)
+    (on-dx-boat)
 ))
 
 ;un-comment the following line if metric is needed
