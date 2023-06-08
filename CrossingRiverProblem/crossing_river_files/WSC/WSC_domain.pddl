@@ -21,7 +21,7 @@
 
 )
 
-(:action trasporta-cavolo-destra
+(:action move-cabbage-right
   :parameters (?y - trasportatore)
   :precondition (or 
                     (and
@@ -43,7 +43,7 @@
   :effect (and (on-dx cavolo)(not (on-sx cavolo)) (on-dx-barca ?y)(not (on-sx-barca ?y)))
 )
 
-(:action trasporta-cavolo-sinistra
+(:action move-cabbage-left
   :parameters (?y - trasportatore)
   :precondition (or 
                     (and
@@ -65,20 +65,20 @@
 )
 
 
-(:action trasporta-pecora-destra
+(:action move-sheep-right
   :parameters (?y - trasportatore)
   :precondition (and (on-sx pecora) (on-sx-barca ?y))
   :effect (and (on-dx pecora)(not (on-sx pecora))(on-dx-barca ?y)(not (on-sx-barca ?y)))
 )
 
-(:action trasporta-pecora-sinistra
+(:action move-sheep-left
   :parameters (?y - trasportatore)
   :precondition (and (on-dx pecora) (on-dx-barca ?y))
   :effect (and (on-sx pecora)(not (on-dx pecora))(on-sx-barca ?y)(not (on-dx-barca ?y)))
 )
 
 
-(:action trasporta-lupo-destra
+(:action move-wolf-right
   :parameters (?y - trasportatore)
   :precondition  (or 
                     (and
@@ -99,7 +99,7 @@
   :effect (and (on-dx lupo)(not (on-sx lupo))(on-dx-barca ?y)(not (on-sx-barca ?y)))
 )
 
-(:action trasporta-lupo-sinistra
+(:action move-wolf-left
   :parameters (?y - trasportatore)
   :precondition (or 
                     (and
