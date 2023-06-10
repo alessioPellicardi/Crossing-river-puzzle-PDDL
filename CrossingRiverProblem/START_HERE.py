@@ -45,6 +45,9 @@ menubtn.place(x=300, y=120)
 w = tk.Label(root, text="PDDL Representation: Crossing river problem", font=("Arial", 25))
 w.place(x=70,y=70)
 
+note = tk.Label(root, text="Note: when in the plan graphical visualization press the spacebar to see next step", font=("Arial", 9))
+note.place(x=70,y=250)
+
 def callback():
     print('Button callback '+ e.get())
     selected_option = e.get()

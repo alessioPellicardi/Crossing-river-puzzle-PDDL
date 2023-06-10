@@ -1,7 +1,0 @@
-(move-sheep-right wolf sheep cabbage)
-(empty-going-left wolf sheep cabbage)
-(move-cabbage-right wolf sheep cabbage)
-(move-sheep-left wolf sheep cabbage)
-(move-wolf-right wolf sheep cabbage)
-(empty-going-left wolf sheep cabbage)
-(move-sheep-right wolf sheep cabbage)
