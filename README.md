@@ -1,4 +1,4 @@
-# PDDL representation: "Crossing river problem"
+# PDDL approach: "Crossing river problem"
 The following project has the objective of creating the PDDL representation of the  “crossing river problem”.
 Including a graphical way to show the plan
 
