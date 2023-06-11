@@ -4,6 +4,8 @@ The following project has the objective of creating the PDDL representation of m
 * Jealous Husbands: 2 Couples
 * Jealous Husbands: 3 Couples
 * Jealous Husbands: n Couples
+
+
 Including a graphical way to show the plan
 
 # HOW to run the planner and show the plan in a graphical way
